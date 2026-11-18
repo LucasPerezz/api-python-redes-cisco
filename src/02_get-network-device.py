@@ -1,8 +1,20 @@
 import json
+import os
+import getpass
 import requests
-api_url = "http://localhost:58000/api/v1/network-device"
 
-headers={"X-Auth-Token": "NC-144-d131174a867340c3a5a8-nbi"}
+BASE_URL = os.environ.get("NC_BASE_URL", "http://localhost:58000/api/v1")
+
+def obtener_ticket():
+    """Pide un ticket nuevo (cambia en cada sesion y vence)."""
+    body = {"username": os.environ.get("NC_USER", "admin"),
+            "password": os.environ.get("NC_PASS") or getpass.getpass("Clave del controlador: ")}
+    r = requests.post(BASE_URL + "/ticket", json.dumps(body), headers={"content-type": "application/json"})
+    return r.json()["response"]["serviceTicket"]
+
+api_url = BASE_URL + "/network-device"
+
+headers = {"X-Auth-Token": obtener_ticket()}
 
 resp = requests.get(api_url, headers=headers)
 
@@ -17,4 +29,4 @@ print()
 networkDevices = response_json["response"]
 
 for networkDevice in networkDevices:
-    print(networkDevice["hostname"], "\t", networkDevice["platformId"], "\t", networkDevice["managementIpAddress"])
+    print(networkDevice.get("hostname") or "N/D", "\t", networkDevice.get("platformId") or "N/D", "\t", networkDevice.get("managementIpAddress") or "N/D")
