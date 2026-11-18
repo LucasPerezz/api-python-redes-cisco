@@ -1,14 +1,17 @@
 import json
+import os
+import getpass
 import requests
-api_url = "http://localhost:58000/api/v1/ticket"
+BASE_URL = os.environ.get("NC_BASE_URL", "http://localhost:58000/api/v1")
+api_url = BASE_URL + "/ticket"
 
 headers = {
     "content-type": "application/json"
 }
 
 body_json = {
-    "username": "cisco",
-    "password": "cisco123!"
+    "username": os.environ.get("NC_USER", "admin"),
+    "password": os.environ.get("NC_PASS") or getpass.getpass("Clave del controlador: ")
 }
 
 resp = requests.post(api_url, json.dumps(body_json), headers=headers)
