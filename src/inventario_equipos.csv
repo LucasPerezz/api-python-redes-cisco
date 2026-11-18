@@ -1,0 +1,13 @@
+﻿hostname,tipo,modelo,ip_gestion,estado_coleccion,alcanzabilidad,version_software,numero_serie,vecinos,fecha_consulta
+R3,MultiLayerSwitch,3650,192.168.92.1,Managed,Reachable,16.3.2,CAT10107YVE-,R2 | R6 | SW_SERVER | R1,2026-11-18 11:04:54
+R1,Router,ISR4300,10.0.13.1,Managed,Reachable,15.4,FDO1302FPO0-,ISP | R2 | R3,2026-11-18 11:04:54
+R2,MultiLayerSwitch,3650,10.0.12.2,Managed,Reachable,16.3.2,CAT1010FOAO-,R1 | R3 | R4 | R5 | SW_HQ,2026-11-18 11:04:54
+R5,Router,ISR4300,10.0.25.2,Managed,Reachable,15.4,FDO1302WJBJ-,R2 | SWB,2026-11-18 11:04:54
+R6,Router,ISR4300,10.0.36.2,Managed,Reachable,15.4,FDO1302JGR4-,R3 | SWC,2026-11-18 11:04:54
+N/D,N/D,N/D,203.0.113.2,Wrong credential,Unreachable,N/D,N/D,N/D,2026-11-18 11:04:54
+R4,Router,ISR4300,10.0.24.2,Managed,Reachable,15.4,FDO13028WH4-,R2 | SWA,2026-11-18 11:04:54
+SW_HQ,Switch,2960,192.168.91.2,Managed,Reachable,15.0,CAT101082R7-,PC0 | PC1 | R2,2026-11-18 11:04:54
+SW_SERVER,Switch,2960,192.168.92.2,Managed,Reachable,15.0,CAT1010CATL-,DNS | FTP | NTP | NetworkController | R3,2026-11-18 11:04:54
+SWA,Switch,2960,192.168.94.2,Managed,Reachable,15.0,CAT1010Q63Z-,PC2 | PC3 | R4,2026-11-18 11:04:54
+SWB,Switch,2960,192.168.95.2,Managed,Reachable,15.0,CAT1010XG3G-,PC4 | PC5 | R5,2026-11-18 11:04:54
+SWC,Switch,2960,192.168.96.2,Managed,Reachable,15.0,CAT1010S2LG-,PC7 | PC6 | R6,2026-11-18 11:04:54
